@@ -1,195 +1,210 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07110d">
-  <meta name="description" content="Tuled: aplicación de pintura electrostática en polvo con calidad certificada ISO 9001:2015 en Apodaca, Nuevo León.">
-  <title>Tuled | Pintura electrostática de excelente calidad</title>
-  <link rel="icon" type="image/png" href="imgs/logo-tuled-verde.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tuled | Pintura electrostática en Apodaca, Nuevo León</title>
+  <meta name="description" content="Aplicación de pintura electrostática en polvo para piezas metálicas, proyectos individuales y lotes de producción. Tuled, experiencia desde 2003.">
+  <meta property="og:title" content="Tuled | Pintura electrostática de excelente calidad">
+  <meta property="og:description" content="Protección, color y acabados profesionales para piezas metálicas.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="imgs/operario-pintando.webp">
+  <link rel="icon" href="imgs/logo-tuled-verde.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://res.cloudinary.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@200;300;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20261028-v2-2">
+  <script src="script.js?v=20261028-v2-2" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-  <div class="video-stage" aria-hidden="true">
-    <video id="scroll-video" muted playsinline autoplay loop preload="auto" poster="">
+  <div class="site-video-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="imgs/evidencia-11.webp">
       <source src="https://res.cloudinary.com/dbsjtpqpa/video/upload/q_auto,f_auto/v1793156538/VIDEOTULED1_ry1gh2.mp4" type="video/mp4">
     </video>
-    <div class="video-tint"></div>
-    <div class="video-grain"></div>
+    <div class="site-video-tint"></div>
   </div>
-  <div class="loading" id="loading" role="status" aria-live="polite">
-    <img src="imgs/logo-tuled-blanco.png" alt="">
-    <span>Cargando experiencia</span>
-    <i></i>
-  </div>
-
-  <header class="site-header glass" id="site-header">
-    <a class="brand" href="#inicio" aria-label="Tuled, inicio">
-      <img src="imgs/logo-tuled-blanco.png" alt="Tuled">
-    </a>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
-      <span></span><span></span>
-    </button>
-    <nav id="main-nav" aria-label="Navegación principal">
-      <a href="#nosotros">Nosotros</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#calidad">Calidad</a>
-      <a href="#contacto">Contacto</a>
-      <a class="nav-cta" href="https://wa.me/528180641624?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20deseo%20cotizar%20un%20servicio%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener">Cotizar</a>
-    </nav>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Tuled, inicio">
+        <img class="logo-white" src="imgs/Tuled_logo_original_blanco_sin_fondo.png" alt="Tuled">
+        <img class="logo-green" src="imgs/Tuled_logo_original_verde_sin_fondo.png" alt="">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <a href="index.html" aria-current="page">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="piezas.html">Qué pintamos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
+        <a href="blog.html">Blog</a>
+        <a href="faqs.html">Preguntas frecuentes</a>
+        <a href="#contacto">Contacto</a>
+        <a class="nav-express" href="#express">Servicio Express</a>
+      </nav>
+    </div>
   </header>
 
   <main id="contenido">
-    <section class="hero scene" id="inicio" data-scene="hero">
-      <div class="hero-brand" id="hero-brand">
-        <img src="imgs/logo-tuled-blanco.png" alt="Tuled">
-        <span>Desde 2003</span>
-      </div>
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span></span> Acabados industriales</p>
-        <h1>Pintura electrostática de <em>excelente calidad.</em></h1>
-        <p class="lead">Protección, color y acabado profesional para piezas metálicas, desde una pieza hasta grandes volúmenes.</p>
-        <div class="actions">
-          <a class="button button-primary" href="https://wa.me/528180641624?text=Hola%2C%20deseo%20cotizar%20un%20servicio%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener">Solicitar cotización</a>
-          <a class="button button-ghost" href="#servicios">Ver servicios</a>
-        </div>
-      </div>
-      <a class="scroll-cue" href="#nosotros" aria-label="Continuar hacia abajo"><span></span>Desliza</a>
-    </section>
-
-    <section class="scene intro" id="nosotros" data-scene="intro">
-      <div class="section-wrap align-right">
-        <article class="statement glass reveal">
-          <p class="eyebrow">Tuled, S.A. de C.V.</p>
-          <h2>Más de dos décadas perfeccionando cada acabado.</h2>
-          <p>Somos una empresa mexicana especializada en la aplicación de pintura en polvo. Combinamos experiencia, flexibilidad y control para responder a las especificaciones de cada proyecto.</p>
-          <div class="micro-stats">
-            <div><strong>2003</strong><span>Inicio de operaciones</span></div>
-            <div><strong>1 pieza</strong><span>Hasta grandes lotes</span></div>
-            <div><strong>24 h</strong><span>Servicio urgente disponible</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="scene services" id="servicios" data-scene="services">
-      <div class="section-wrap">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Lo que hacemos</p>
-          <h2>Un proceso completo.<br><em>Un acabado confiable.</em></h2>
-        </div>
-        <div class="service-grid">
-          <article class="service-card glass reveal">
-            <span>01</span>
-            <h3>Pintura electrostática</h3>
-            <p>Recubrimiento en polvo horneado, uniforme y resistente para piezas metálicas.</p>
-          </article>
-          <article class="service-card glass reveal">
-            <span>02</span>
-            <h3>Pretratamiento</h3>
-            <p>Desengrase, fosfatizado y pulido para preparar correctamente cada superficie.</p>
-          </article>
-          <article class="service-card glass reveal">
-            <span>03</span>
-            <h3>Control de calidad</h3>
-            <p>Inspección, trazabilidad y pruebas basadas en normas ASTM.</p>
-          </article>
-          <article class="service-card glass reveal">
-            <span>04</span>
-            <h3>Proyectos especiales</h3>
-            <p>Asesoría, enmascarado, colores, empaque y atención a requerimientos específicos.</p>
-          </article>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <img class="hero-mark" src="imgs/Tuled_logo_original_blanco_sin_fondo.png" alt="Tuled">
+        <h1 id="hero-title" class="smoke-hover">Pintura electrostática de <em>excelente calidad.</em></h1>
+        <p>Protección, color y acabados profesionales para piezas metálicas, desde una pieza hasta grandes lotes.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="https://wa.me/528180641624?text=Hola%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener">Solicitar cotización</a>
+          <a class="btn btn-secondary" href="#servicios">Conocer nuestros servicios</a>
         </div>
       </div>
     </section>
 
-    <section class="scene quality" id="calidad" data-scene="quality">
-      <div class="section-wrap quality-layout">
-        <div class="quality-seal reveal">
-          <div class="seal-orbit"></div>
-          <img src="imgs/iso-9001-gold.png" alt="Certificación ISO 9001">
+    <section class="metrics" id="indicadores" aria-label="Indicadores de Tuled">
+      <div class="container metrics-grid">
+        <div class="metric" data-roll-start="1" data-roll-end="20" data-roll-prefix="+" data-roll-duration="1350"><strong><span data-roll-value>+1</span></strong><small>Años de experiencia</small></div>
+        <div class="metric" data-roll-start="2026" data-roll-end="2003" data-roll-duration="1500"><strong><span data-roll-value>2026</span></strong><small>Inicio de operaciones</small></div>
+        <div class="metric" data-roll-start="1" data-roll-end="100" data-roll-suffix="%" data-roll-duration="1450"><strong><span data-roll-value>1%</span><img class="mexico-flag" src="imgs/mexicologo.webp" alt="Bandera de México"></strong><small>Empresa mexicana</small></div>
+      </div>
+    </section>
+
+    <section class="about-split">
+      <div class="about-photo reveal"><img src="imgs/evidencia-7.webp" alt="Área de producción y personal de Tuled" loading="lazy"></div>
+      <div class="about-copy">
+        <div class="heritage-mark" aria-label="Tuled, fundada en 2003"><span>Fundada en</span><strong>2003</strong><small>Tuled · Nuevo León</small></div>
+        <h2 class="heritage-title reveal">Más de dos décadas dando forma a mejores acabados.</h2>
+        <p>Somos una empresa mexicana especializada en pintura electrostática en polvo. Desde 2003 trabajamos con piezas metálicas de diferentes dimensiones, atendiendo proyectos individuales y lotes de producción.</p>
+        <a class="btn btn-primary" href="quienes-somos.html">Conoce nuestra historia</a>
+      </div>
+    </section>
+
+    <section class="section section-green texture" id="servicios" style="--texture:url('imgs/textura-metal8.webp')">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="kicker">Servicios</span><h2 class="smoke-hover reveal">Un proceso completo.<br><span class="title-accent">Un acabado confiable.</span></h2></div>
+          <p>Atención técnica para preparar, recubrir y revisar componentes metálicos de distintas geometrías y volúmenes.</p>
         </div>
-        <article class="quality-copy glass reveal">
-          <p class="eyebrow gold">Calidad certificada</p>
-          <h2>ISO 9001:2015</h2>
-          <p>Nuestro sistema de gestión de calidad respalda procesos controlados, resultados consistentes y mejora continua.</p>
-          <ul>
-            <li>Inspección durante el proceso</li>
-            <li>Trazabilidad de las piezas</li>
-            <li>Pruebas de apariencia y desempeño</li>
-          </ul>
-          <a class="text-link" href="#contacto">Hablemos de tu proyecto</a>
-        </article>
+        <div class="services-grid">
+          <article class="service-card reveal"><img class="service-icon" src="imgs/tuled_01_pintura_electrostatica_blanco.webp" alt="" loading="lazy"><h3>Pintura electrostática</h3><p>Aplicamos pintura en polvo sobre componentes metálicos mediante un proceso de recubrimiento y curado que permite obtener acabados uniformes y resistentes, según las especificaciones del proyecto.</p></article>
+          <article class="service-card reveal"><img class="service-icon" src="imgs/tuled_02_pretratamiento_blanco.webp" alt="" loading="lazy"><h3>Pretratamiento</h3><p>Preparamos las superficies mediante los tratamientos aplicables para favorecer la limpieza y las condiciones de adherencia del recubrimiento.</p></article>
+          <article class="service-card reveal"><img class="service-icon" src="imgs/tuled_03_control_de_calidad_blanco.webp" alt="" loading="lazy"><h3>Control de calidad</h3><p>Revisamos las condiciones del acabado y los requisitos acordados con cada cliente, considerando inspecciones visuales y pruebas técnicas cuando sean aplicables.</p></article>
+          <article class="service-card reveal"><img class="service-icon" src="imgs/tuled_04_proyectos_especiales_blanco.webp" alt="" loading="lazy"><h3>Proyectos especiales</h3><p>Atendemos piezas con requerimientos particulares de color, geometría, enmascarado, presentación y volumen de producción.</p></article>
+        </div>
       </div>
     </section>
 
-    <section class="scene advantages" id="ventajas" data-scene="advantages">
-      <div class="section-wrap align-right">
-        <article class="materials-panel glass reveal">
-          <h2>Del prototipo a la producción.</h2>
-          <div class="materials-list">
-            <div class="material-row reveal"><span>01</span><strong>Acero al carbón</strong><i>Sustrato</i></div>
-            <div class="material-row reveal"><span>02</span><strong>Aluminio</strong><i>Sustrato</i></div>
-            <div class="material-row reveal"><span>03</span><strong>Latón</strong><i>Sustrato</i></div>
-            <div class="material-row reveal"><span>04</span><strong>Aleaciones de cobre</strong><i>Sustrato</i></div>
-            <div class="material-row reveal"><span>05</span><strong>Epóxicos</strong><i>Recubrimiento</i></div>
-            <div class="material-row reveal"><span>06</span><strong>Poliéster</strong><i>Recubrimiento</i></div>
-            <div class="material-row reveal"><span>07</span><strong>Poliuretano</strong><i>Recubrimiento</i></div>
-            <div class="material-row reveal"><span>08</span><strong>Colores especiales</strong><i>Acabado</i></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="scene contact" id="contacto" data-scene="contact">
-      <div class="section-wrap contact-grid">
-        <div class="contact-copy reveal">
-          <h2>Convirtamos tu pieza en un acabado de calidad.</h2>
-          <p>Envíanos material, medidas, cantidad, color y fotografías. Te ayudaremos a definir la mejor solución.</p>
-          <div class="contact-links">
-            <a href="tel:+528111045465">81 1104 5465</a>
-            <a href="mailto:contacto@pinturastuled.com">contacto@pinturastuled.com</a>
+    <section class="express" id="express">
+      <div class="container express-grid">
+        <div class="express-copy reveal">
+          <img class="express-icon" src="imgs/icono-express.webp" alt="Icono de atención rápida" loading="lazy">
+          <h2>Servicio Express en <span class="title-accent">menos de 24 horas.</span></h2>
+          <p>¿Tu producción no puede esperar? Consulta nuestro servicio de atención prioritaria para piezas y componentes metálicos.</p>
+          <small class="muted-note">Sujeto a disponibilidad, características del proyecto y confirmación del plazo.</small>
+          <a class="btn btn-express" href="https://wa.me/528180641624?text=Hola%2C%20necesito%20cotizar%20un%20servicio%20Express%20de%20pintura%20electrost%C3%A1tica.%20Me%20gustar%C3%ADa%20confirmar%20disponibilidad%20y%20tiempo%20de%20entrega." target="_blank" rel="noopener">Solicitar servicio express</a>
+        </div>
+        <div class="express-visual reveal">
+          <img class="express-worker" src="imgs/servicio-express.webp" alt="Especialista de Tuled con equipo de aplicación" loading="lazy">
+          <div class="express-demo glass-panel">
+            <h3>¡Así de rápido!</h3>
+            <button class="piece-reveal" type="button" aria-pressed="false" aria-label="Mostrar pieza con acabado verde">
+              <img src="imgs/metal-sinpintar.webp" alt="Pieza metálica sin recubrimiento" loading="lazy">
+              <img class="painted" src="imgs/metal-pintado.webp" alt="La misma pieza con acabado verde" loading="lazy">
+            </button>
           </div>
         </div>
-        <form class="quote-form glass reveal" id="quote-form">
-          <label>Nombre<input name="name" type="text" required autocomplete="name" placeholder="Tu nombre"></label>
-          <label>Empresa<input name="company" type="text" autocomplete="organization" placeholder="Nombre de empresa"></label>
-          <label>Teléfono<input name="phone" type="tel" required autocomplete="tel" placeholder="81 0000 0000"></label>
-          <label>Proyecto<textarea name="project" rows="3" required placeholder="Piezas, material, cantidad y color"></textarea></label>
-          <button class="button button-primary" type="submit">Enviar por WhatsApp</button>
-        </form>
-        <div class="map-card glass reveal">
-          <iframe title="Ubicación de Tuled en Apodaca" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8542.10907623705!2d-100.26592561940498!3d25.8195881388607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866292d5ba8390f9%3A0x3203664b6122f4fe!2sTuled%20SA%20de%20CV%20Pintura%20En%20Polvo!5e0!3m2!1ses-419!2smx!4v1793155082453!5m2!1ses-419!2smx" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div><strong>Tuled, S.A. de C.V.</strong><span>Jardines de la Primavera 865, Apodaca, N.L.</span></div>
+      </div>
+    </section>
+
+    <section class="section section-deep">
+      <div class="container">
+        <div class="section-head"><div><span class="kicker">Materiales</span><h2 class="reveal">Cada metal, una nueva posibilidad.</h2></div><p>Trabajamos con diferentes superficies metálicas para responder a las necesidades de cada proyecto.</p></div>
+        <div class="carousel-shell">
+          <div class="material-rail" aria-label="Materiales que trabajamos">
+            <article class="material-card"><img src="imgs/acero-carbon.webp" alt="Acero al carbón" loading="lazy"><div class="material-copy"><h3>Acero al carbón</h3><p>Placas, estructuras y componentes para diferentes aplicaciones industriales.</p></div></article>
+            <article class="material-card"><img src="imgs/aluminio.webp" alt="Aluminio" loading="lazy"><div class="material-copy"><h3>Aluminio</h3><p>Perfiles, láminas y piezas fabricadas que requieren acabados profesionales.</p></div></article>
+            <article class="material-card"><img src="imgs/laton.webp" alt="Latón" loading="lazy"><div class="material-copy"><h3>Latón</h3><p>Accesorios y componentes metálicos sujetos a evaluación de recubrimiento.</p></div></article>
+            <article class="material-card"><img src="imgs/aleacioncobre.webp" alt="Aleación de cobre" loading="lazy"><div class="material-copy"><h3>Aleaciones de cobre</h3><p>Piezas especiales y componentes industriales, según sus características técnicas.</p></div></article>
+            <article class="material-card"><img src="imgs/magnesio.webp" alt="Magnesio" loading="lazy"><div class="material-copy"><h3>Magnesio</h3><p>Componentes ligeros sujetos a evaluación técnica según la aleación y las condiciones de la superficie.</p></div></article>
+          </div>
+          <div class="carousel-controls" aria-label="Controles de materiales"><button type="button" data-carousel-dir="-1" aria-label="Ver material anterior">←</button><button type="button" data-carousel-dir="1" aria-label="Ver material siguiente">→</button></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head"><div><span class="kicker">Recubrimientos</span><h2 class="reveal">El acabado ideal para cada aplicación.</h2></div><p>Selecciona una opción para conocer sus características generales.</p></div>
+        <div class="finish-layout">
+          <div class="finish-visual reveal"><img data-finish-image src="imgs/epoxico.webp" alt="Muestra de recubrimiento epóxico" loading="lazy"></div>
+          <div class="finish-tabs" role="tablist" aria-label="Tipos de recubrimiento">
+            <button class="finish-tab active" type="button" data-image="imgs/epoxico.webp" data-alt="Muestra de recubrimiento epóxico"><b>01</b><span><strong>Epóxico</strong><span>Recubrimientos utilizados donde se requieren buenas propiedades de adherencia y resistencia, considerando las condiciones de uso.</span></span></button>
+            <button class="finish-tab" type="button" data-image="imgs/poliester.webp" data-alt="Muestra de recubrimiento poliéster"><b>02</b><span><strong>Poliéster</strong><span>Acabados disponibles para aplicaciones industriales y, según su formulación, piezas expuestas al exterior.</span></span></button>
+            <button class="finish-tab" type="button" data-image="imgs/poliuretano.webp" data-alt="Muestra de recubrimiento poliuretano"><b>03</b><span><strong>Poliuretano</strong><span>Opciones para requisitos específicos de apariencia y desempeño, sujetas a disponibilidad.</span></span></button>
+            <button class="finish-tab" type="button" data-image="imgs/textura-metal5.webp" data-alt="Muestra de color y acabado especial"><b>04</b><span><strong>Colores y acabados especiales</strong><span>Alternativas de color, brillo y textura para proyectos que requieren una terminación particular.</span></span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight section-deep">
+      <div class="container"><div class="section-head"><div><span class="kicker">Proveedores</span><h2>Marcas con las que trabajamos.</h2></div><p>Opciones de diferentes fabricantes para responder a necesidades de color, acabado y aplicación.</p></div></div>
+      <div class="carousel-shell"><div class="marquee" aria-label="Marcas proveedoras de pintura"><div class="marquee-track">
+        <div class="logo-item"><img src="imgs/1-proveedorpintura.webp" alt="Marca proveedora 1"></div><div class="logo-item"><img src="imgs/2-proveedorpintura.webp" alt="Marca proveedora 2"></div><div class="logo-item"><img src="imgs/3-proveedorpintura.webp" alt="Marca proveedora 3"></div><div class="logo-item"><img src="imgs/4-proveedorpintura.webp" alt="Marca proveedora 4"></div><div class="logo-item"><img src="imgs/5-proveedorpintura.webp" alt="Marca proveedora 5"></div><div class="logo-item"><img src="imgs/6-proveedorpintura.webp" alt="Marca proveedora 6"></div><div class="logo-item"><img src="imgs/7-proveedorpintura.webp" alt="Marca proveedora 7"></div><div class="logo-item"><img src="imgs/8-proveedorpintura.webp" alt="Marca proveedora 8"></div><div class="logo-item"><img src="imgs/9-proveedorpintura.webp" alt="Marca proveedora 9"></div>
+        <div class="logo-item" aria-hidden="true"><img src="imgs/1-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/2-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/3-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/4-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/5-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/6-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/7-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/8-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/9-proveedorpintura.webp" alt=""></div>
+      </div></div><div class="carousel-controls" aria-label="Controles de proveedores"><button type="button" data-carousel-dir="-1" aria-label="Ver marcas anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver marcas siguientes">→</button></div></div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head"><div><span class="kicker">Aplicaciones</span><h2 class="reveal">¿Qué piezas podemos pintar?</h2></div><p>Desde componentes pequeños hasta estructuras industriales. Conoce algunas de las piezas que pueden recibir nuestros acabados.</p></div>
+        <div class="carousel-shell"><div class="pieces-preview">
+          <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-gabinetemetalico.webp" alt="Gabinete metálico" loading="lazy"><span>Gabinetes metálicos</span></a>
+          <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-rejillas.webp" alt="Rejillas metálicas" loading="lazy"><span>Rejillas</span></a>
+          <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-soportesautomotrices.webp" alt="Soportes automotrices" loading="lazy"><span>Soportes automotrices</span></a>
+          <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-estructurasmetalicas.webp" alt="Estructura metálica" loading="lazy"><span>Estructuras</span></a>
+          <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-maquinaria.webp" alt="Base de maquinaria" loading="lazy"><span>Bases para maquinaria</span></a>
+          <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-panelesperforados.webp" alt="Paneles perforados" loading="lazy"><span>Paneles perforados</span></a>
+        </div><div class="carousel-controls" aria-label="Controles de piezas"><button type="button" data-carousel-dir="-1" aria-label="Ver piezas anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver piezas siguientes">→</button></div></div>
+        <div class="piece-actions"><a class="btn btn-primary" href="piezas.html">Ver todas las piezas</a></div>
+      </div>
+    </section>
+
+    <section class="section-tight section-deep">
+      <div class="container"><div class="section-head"><div><span class="kicker">En planta</span><h2>Conoce a Tuled.</h2></div><div><p>Personas, experiencia y procesos detrás de cada acabado.</p><a class="btn btn-secondary" href="quienes-somos.html">Conoce más de nosotros</a></div></div></div>
+      <div class="carousel-shell"><div class="marquee" aria-label="Fotografías reales de Tuled"><div class="marquee-track">
+        <div class="photo-item"><img src="imgs/evidencia-2.webp" alt="Aplicación de pintura en la planta Tuled" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-6.webp" alt="Personal en capacitación" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-7.webp" alt="Área de producción" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-9.webp" alt="Piezas terminadas" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-10.webp" alt="Componentes en proceso" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-11.webp" alt="Equipo trabajando en aplicación" loading="lazy"></div>
+        <div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-2.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-6.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-7.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-9.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-10.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-11.webp" alt="" loading="lazy"></div>
+      </div></div><div class="carousel-controls" aria-label="Controles de fotografías"><button type="button" data-carousel-dir="-1" aria-label="Ver fotografías anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver fotografías siguientes">→</button></div></div>
+    </section>
+
+    <section class="section-tight section-dark">
+      <div class="container"><div class="section-head center-head"><div><h2>Empresas que confían en nosotros.</h2></div></div></div>
+      <div class="carousel-shell"><div class="marquee" aria-label="Empresas clientes"><div class="marquee-track">
+        <div class="logo-item"><img src="imgs/1-cliente.webp" alt="Güntner"></div><div class="logo-item"><img src="imgs/2-cliente.webp" alt="EZI"></div><div class="logo-item"><img src="imgs/3-cliente.webp" alt="Hierro Gris de Monterrey"></div><div class="logo-item"><img src="imgs/4-cliente.webp" alt="SRI"></div><div class="logo-item"><img src="imgs/5-cliente.webp" alt="Plesa"></div>
+        <div class="logo-item" aria-hidden="true"><img src="imgs/1-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/2-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/3-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/4-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/5-cliente.webp" alt=""></div>
+      </div></div><div class="carousel-controls" aria-label="Controles de clientes"><button type="button" data-carousel-dir="-1" aria-label="Ver clientes anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver clientes siguientes">→</button></div></div>
+    </section>
+
+    <section class="section section-green texture" id="calidad" style="--texture:url('imgs/textura-metal4.webp')">
+      <div class="container quality-grid">
+        <img class="quality-badge reveal" src="imgs/iso9001.webp" alt="Certificación ISO 9001:2015" loading="lazy">
+        <div class="quality-copy"><span class="kicker">Gestión de calidad</span><h2 class="reveal">La calidad forma parte de nuestro trabajo.</h2><p>En Tuled trabajamos mediante procesos orientados al cumplimiento de los requisitos de nuestros clientes, el seguimiento de nuestros servicios y la mejora continua.</p><div class="quality-points"><span>Revisión de acabados</span><span>Control durante el proceso</span><span>Atención a especificaciones</span><span>Seguimiento de requisitos</span></div><p class="muted-note">Consulta con nuestro equipo la documentación vigente y el alcance aplicable del sistema de gestión de calidad.</p><a class="btn btn-secondary" href="quienes-somos.html#calidad">Conoce nuestro compromiso</a></div>
+      </div>
+    </section>
+
+    <section class="section section-deep texture" id="contacto" style="--texture:url('imgs/textura-metal1.webp')">
+      <div class="container contact-grid">
+        <div class="contact-info"><span class="kicker">Contacto</span><h2>Hablemos de tu próximo proyecto.</h2><p>Cuéntanos qué necesitas pintar. Comparte las características de tus piezas y te ayudaremos a revisar las opciones disponibles.</p><div class="contact-list"><a href="tel:+528111045465">81 1104 5465</a><a href="mailto:contacto@pinturastuled.com">contacto@pinturastuled.com</a><a href="https://wa.me/528180641624" target="_blank" rel="noopener">WhatsApp: 81 8064 1624</a><address>Jardines de la Primavera 865, Apodaca, Nuevo León, México.</address></div><div class="map"><iframe title="Ubicación de Tuled en Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8542.10907623705!2d-100.26592561940498!3d25.8195881388607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866292d5ba8390f9%3A0x3203664b6122f4fe!2sTuled%20SA%20de%20CV%20Pintura%20En%20Polvo!5e0!3m2!1ses-419!2smx!4v1793155082453!5m2!1ses-419!2smx" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
+        <form class="quote-form" data-quote-form><div class="form-grid">
+          <div class="field"><label for="nombre">Nombre *</label><input id="nombre" name="nombre" autocomplete="name" required></div><div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization"></div>
+          <div class="field"><label for="telefono">Teléfono *</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required></div><div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email"></div>
+          <div class="field field-wide"><label for="proyecto">Tipo de pieza o proyecto *</label><input id="proyecto" name="proyecto" required></div><div class="field"><label for="cantidad">Cantidad aproximada</label><input id="cantidad" name="cantidad"></div>
+          <div class="field"><label for="material">Material</label><select id="material" name="material"><option value="">Seleccionar</option><option>Acero al carbón</option><option>Aluminio</option><option>Latón</option><option>Aleación de cobre</option><option>Otro o por confirmar</option></select></div>
+          <div class="field"><label for="acabado">Color o acabado requerido</label><input id="acabado" name="acabado"></div><div class="field"><label for="fecha">Fecha de entrega deseada</label><input id="fecha" name="fecha" type="date"></div>
+          <div class="field field-wide"><label for="detalles">Descripción adicional</label><textarea id="detalles" name="detalles" placeholder="Medidas, condiciones de la pieza o requisitos especiales"></textarea></div>
+        </div><button class="btn btn-primary" type="submit">Enviar solicitud por WhatsApp</button><p class="form-note">Al continuar, WhatsApp abrirá un mensaje con los datos capturados. Tuled no almacena esta información en el sitio.</p></form>
       </div>
     </section>
   </main>
 
-  <aside class="trust-dock" aria-label="Accesos rápidos">
-    <a class="iso-float glass" href="#calidad" aria-label="Conocer nuestra certificación ISO 9001">
-      <img src="imgs/iso-9001-gold.png" alt="">
-      <span>ISO<br><b>9001</b></span>
-    </a>
-    <a class="whatsapp-float" href="https://wa.me/528180641624?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20deseo%20cotizar%20un%20servicio%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
-      <span class="whatsapp-label">¿Cotizamos?</span>
-      <img src="imgs/whatsapp.png" alt="WhatsApp">
-    </a>
-  </aside>
-
-  <footer class="glass">
-    <img src="imgs/logo-tuled-blanco.png" alt="Tuled">
-    <p>Aplicación de pintura de excelente calidad.</p>
-    <span>© <b id="year"></b> Tuled, S.A. de C.V.</span>
-  </footer>
-
-  <noscript><style>.loading{display:none}.reveal{opacity:1!important;transform:none!important}</style></noscript>
-  <script src="script.js"></script>
+  <footer class="footer"><div class="container"><div class="footer-grid"><div><img class="footer-logo" src="imgs/Tuled_logo_original_blanco_sin_fondo.png" alt="Tuled"><p>Aplicación de pintura de excelente calidad.<br>Empresa mexicana desde 2003.</p></div><nav aria-label="Navegación del pie"><h3>Explora</h3><a href="#servicios">Servicios</a><a href="piezas.html">Qué pintamos</a><a href="quienes-somos.html">Quiénes somos</a><a href="blog.html">Blog</a><a href="faqs.html">Preguntas frecuentes</a></nav><div class="footer-contact"><h3>Contacto</h3><a href="tel:+528111045465">81 1104 5465</a><a href="mailto:contacto@pinturastuled.com">contacto@pinturastuled.com</a><span>Apodaca, Nuevo León</span></div></div><div class="footer-bottom"><span>© <span data-year></span> Tuled, S.A. de C.V.</span><span>Información técnica sujeta a evaluación de cada proyecto.</span></div></div></footer>
+  <div class="floating-stack"><a class="floating-iso" href="#calidad" aria-label="Ver información de gestión de calidad"><img src="imgs/iso9001.webp" alt=""></a><a class="floating-wa" href="https://wa.me/528180641624?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp"><img src="imgs/whatsapp.png" alt=""></a></div>
 </body>
 </html>
