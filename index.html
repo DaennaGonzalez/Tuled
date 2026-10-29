@@ -13,12 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261028-v2-2">
-  <script src="script.js?v=20261028-v2-2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261028-v2-10">
+  <script src="script.js?v=20261028-v2-10" defer></script>
 </head>
 <body>
   <div class="site-video-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata" poster="imgs/evidencia-11.webp">
+    <video autoplay muted loop playsinline preload="auto">
       <source src="https://res.cloudinary.com/dbsjtpqpa/video/upload/q_auto,f_auto/v1793156538/VIDEOTULED1_ry1gh2.mp4" type="video/mp4">
     </video>
     <div class="site-video-tint"></div>
@@ -75,6 +75,13 @@
       </div>
     </section>
 
+    <section class="section section-green texture quality-highlight" id="calidad" style="--texture:url('imgs/textura-metal6.webp')">
+      <div class="container quality-grid">
+        <img class="quality-badge reveal" src="imgs/iso9001.webp" alt="Certificación ISO 9001:2015" loading="lazy">
+        <div class="quality-copy"><span class="kicker">Calidad certificada</span><h2 class="reveal">La calidad forma parte de nuestro trabajo.</h2><strong class="cert-callout">Contamos con certificación ISO 9001:2015.</strong><p>Nuestro sistema de gestión de calidad respalda la disciplina de nuestros procesos, el seguimiento de los requisitos y la mejora continua. Esta certificación fortalece la confianza de nuestros clientes y demuestra nuestro compromiso con un servicio consistente y responsable.</p><div class="quality-points"><span>Procesos controlados</span><span>Seguimiento de requisitos</span><span>Mejora continua</span><span>Compromiso con el cliente</span></div><p class="muted-note">Pregunta a nuestro equipo por el alcance de la certificación y la documentación vigente.</p><a class="btn btn-secondary" href="quienes-somos.html#calidad">Conoce nuestro compromiso</a></div>
+      </div>
+    </section>
+
     <section class="section section-green texture" id="servicios" style="--texture:url('imgs/textura-metal8.webp')">
       <div class="container">
         <div class="section-head">
@@ -101,13 +108,13 @@
         </div>
         <div class="express-visual reveal">
           <img class="express-worker" src="imgs/servicio-express.webp" alt="Especialista de Tuled con equipo de aplicación" loading="lazy">
-          <div class="express-demo glass-panel">
-            <h3>¡Así de rápido!</h3>
-            <button class="piece-reveal" type="button" aria-pressed="false" aria-label="Mostrar pieza con acabado verde">
-              <img src="imgs/metal-sinpintar.webp" alt="Pieza metálica sin recubrimiento" loading="lazy">
-              <img class="painted" src="imgs/metal-pintado.webp" alt="La misma pieza con acabado verde" loading="lazy">
-            </button>
-          </div>
+        </div>
+        <div class="express-demo glass-panel">
+          <h3>¡Así de rápido!</h3>
+          <button class="piece-reveal" type="button" aria-pressed="false" aria-label="Mostrar pieza con acabado verde">
+            <img src="imgs/metal-sinpintar.webp" alt="Pieza metálica sin recubrimiento" loading="lazy">
+            <img class="painted" src="imgs/metal-pintado.webp" alt="La misma pieza con acabado verde" loading="lazy">
+          </button>
         </div>
       </div>
     </section>
@@ -128,7 +135,7 @@
       </div>
     </section>
 
-    <section class="section section-dark">
+    <section class="section section-dark finish-showcase texture" style="--texture:url('imgs/textura-metal5.webp')">
       <div class="container">
         <div class="section-head"><div><span class="kicker">Recubrimientos</span><h2 class="reveal">El acabado ideal para cada aplicación.</h2></div><p>Selecciona una opción para conocer sus características generales.</p></div>
         <div class="finish-layout">
@@ -151,7 +158,7 @@
       </div></div><div class="carousel-controls" aria-label="Controles de proveedores"><button type="button" data-carousel-dir="-1" aria-label="Ver marcas anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver marcas siguientes">→</button></div></div>
     </section>
 
-    <section class="section section-dark">
+    <section class="section section-dark pieces-showcase texture" style="--texture:url('imgs/textura-metal8.webp')">
       <div class="container">
         <div class="section-head"><div><span class="kicker">Aplicaciones</span><h2 class="reveal">¿Qué piezas podemos pintar?</h2></div><p>Desde componentes pequeños hasta estructuras industriales. Conoce algunas de las piezas que pueden recibir nuestros acabados.</p></div>
         <div class="carousel-shell"><div class="pieces-preview">
@@ -163,11 +170,34 @@
           <a class="piece-tile" href="piezas.html"><img src="imgs/quepintamos-panelesperforados.webp" alt="Paneles perforados" loading="lazy"><span>Paneles perforados</span></a>
         </div><div class="carousel-controls" aria-label="Controles de piezas"><button type="button" data-carousel-dir="-1" aria-label="Ver piezas anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver piezas siguientes">→</button></div></div>
         <div class="piece-actions"><a class="btn btn-primary" href="piezas.html">Ver todas las piezas</a></div>
+        <div class="mini-pieces-block">
+          <div class="mini-pieces-heading"><h3>Muchas posibilidades en movimiento.</h3></div>
+          <div class="marquee pieces-mini-marquee" aria-label="Ejemplos de piezas que podemos pintar"><div class="marquee-track" data-auto-clone>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-gabinetemetalico.webp" alt="Gabinetes metálicos"><span>Gabinetes metálicos</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-rejillas.webp" alt="Rejillas de ventilación"><span>Rejillas de ventilación</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-soportes.webp" alt="Soportes metálicos"><span>Soportes metálicos</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-soportesautomotrices.webp" alt="Soportes automotrices"><span>Soportes automotrices</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-soportesyestructuras.webp" alt="Soportes y estructuras"><span>Soportes y estructuras</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-componentesespeciales.webp" alt="Componentes especiales"><span>Componentes especiales</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-estructurasmetalicas.webp" alt="Estructuras metálicas"><span>Estructuras metálicas</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-maquinaria.webp" alt="Piezas de maquinaria"><span>Piezas de maquinaria</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-panelesperforados.webp" alt="Paneles perforados"><span>Paneles perforados</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-perfilesmetalicos.webp" alt="Perfiles metálicos"><span>Perfiles metálicos</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-gabinetes.webp" alt="Gabinetes industriales"><span>Gabinetes industriales</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-gabinetessuspendidos.webp" alt="Gabinetes suspendidos"><span>Gabinetes suspendidos</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-climatizacion.webp" alt="Componentes de climatización"><span>Climatización</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-cubiertasindustriales.webp" alt="Cubiertas industriales"><span>Cubiertas industriales</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-laminasypaneles.webp" alt="Láminas y paneles"><span>Láminas y paneles</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-racksestanterias.webp" alt="Racks y estanterías"><span>Racks y estanterías</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-componentesespeciales2.webp" alt="Piezas especiales"><span>Piezas especiales</span></a>
+            <a class="mini-piece" href="piezas.html"><img src="imgs/quepintamos-cubiertasindustriales2.webp" alt="Cubiertas metálicas"><span>Cubiertas metálicas</span></a>
+          </div></div>
+        </div>
       </div>
     </section>
 
-    <section class="section-tight section-deep">
-      <div class="container"><div class="section-head"><div><span class="kicker">En planta</span><h2>Conoce a Tuled.</h2></div><div><p>Personas, experiencia y procesos detrás de cada acabado.</p><a class="btn btn-secondary" href="quienes-somos.html">Conoce más de nosotros</a></div></div></div>
+    <section class="section-tight section-deep tuled-showcase">
+      <div class="container"><div class="section-head"><div><span class="kicker">En planta</span><h2>Conoce a Tuled.</h2></div><div><a class="btn btn-secondary" href="quienes-somos.html">Conoce más de nosotros</a></div></div></div>
       <div class="carousel-shell"><div class="marquee" aria-label="Fotografías reales de Tuled"><div class="marquee-track">
         <div class="photo-item"><img src="imgs/evidencia-2.webp" alt="Aplicación de pintura en la planta Tuled" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-6.webp" alt="Personal en capacitación" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-7.webp" alt="Área de producción" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-9.webp" alt="Piezas terminadas" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-10.webp" alt="Componentes en proceso" loading="lazy"></div><div class="photo-item"><img src="imgs/evidencia-11.webp" alt="Equipo trabajando en aplicación" loading="lazy"></div>
         <div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-2.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-6.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-7.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-9.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-10.webp" alt="" loading="lazy"></div><div class="photo-item" aria-hidden="true"><img src="imgs/evidencia-11.webp" alt="" loading="lazy"></div>
@@ -182,29 +212,23 @@
       </div></div><div class="carousel-controls" aria-label="Controles de clientes"><button type="button" data-carousel-dir="-1" aria-label="Ver clientes anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver clientes siguientes">→</button></div></div>
     </section>
 
-    <section class="section section-green texture" id="calidad" style="--texture:url('imgs/textura-metal4.webp')">
-      <div class="container quality-grid">
-        <img class="quality-badge reveal" src="imgs/iso9001.webp" alt="Certificación ISO 9001:2015" loading="lazy">
-        <div class="quality-copy"><span class="kicker">Gestión de calidad</span><h2 class="reveal">La calidad forma parte de nuestro trabajo.</h2><p>En Tuled trabajamos mediante procesos orientados al cumplimiento de los requisitos de nuestros clientes, el seguimiento de nuestros servicios y la mejora continua.</p><div class="quality-points"><span>Revisión de acabados</span><span>Control durante el proceso</span><span>Atención a especificaciones</span><span>Seguimiento de requisitos</span></div><p class="muted-note">Consulta con nuestro equipo la documentación vigente y el alcance aplicable del sistema de gestión de calidad.</p><a class="btn btn-secondary" href="quienes-somos.html#calidad">Conoce nuestro compromiso</a></div>
-      </div>
-    </section>
-
     <section class="section section-deep texture" id="contacto" style="--texture:url('imgs/textura-metal1.webp')">
-      <div class="container contact-grid">
-        <div class="contact-info"><span class="kicker">Contacto</span><h2>Hablemos de tu próximo proyecto.</h2><p>Cuéntanos qué necesitas pintar. Comparte las características de tus piezas y te ayudaremos a revisar las opciones disponibles.</p><div class="contact-list"><a href="tel:+528111045465">81 1104 5465</a><a href="mailto:contacto@pinturastuled.com">contacto@pinturastuled.com</a><a href="https://wa.me/528180641624" target="_blank" rel="noopener">WhatsApp: 81 8064 1624</a><address>Jardines de la Primavera 865, Apodaca, Nuevo León, México.</address></div><div class="map"><iframe title="Ubicación de Tuled en Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8542.10907623705!2d-100.26592561940498!3d25.8195881388607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866292d5ba8390f9%3A0x3203664b6122f4fe!2sTuled%20SA%20de%20CV%20Pintura%20En%20Polvo!5e0!3m2!1ses-419!2smx!4v1793155082453!5m2!1ses-419!2smx" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
-        <form class="quote-form" data-quote-form><div class="form-grid">
-          <div class="field"><label for="nombre">Nombre *</label><input id="nombre" name="nombre" autocomplete="name" required></div><div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization"></div>
-          <div class="field"><label for="telefono">Teléfono *</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required></div><div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email"></div>
-          <div class="field field-wide"><label for="proyecto">Tipo de pieza o proyecto *</label><input id="proyecto" name="proyecto" required></div><div class="field"><label for="cantidad">Cantidad aproximada</label><input id="cantidad" name="cantidad"></div>
-          <div class="field"><label for="material">Material</label><select id="material" name="material"><option value="">Seleccionar</option><option>Acero al carbón</option><option>Aluminio</option><option>Latón</option><option>Aleación de cobre</option><option>Otro o por confirmar</option></select></div>
-          <div class="field"><label for="acabado">Color o acabado requerido</label><input id="acabado" name="acabado"></div><div class="field"><label for="fecha">Fecha de entrega deseada</label><input id="fecha" name="fecha" type="date"></div>
-          <div class="field field-wide"><label for="detalles">Descripción adicional</label><textarea id="detalles" name="detalles" placeholder="Medidas, condiciones de la pieza o requisitos especiales"></textarea></div>
-        </div><button class="btn btn-primary" type="submit">Enviar solicitud por WhatsApp</button><p class="form-note">Al continuar, WhatsApp abrirá un mensaje con los datos capturados. Tuled no almacena esta información en el sitio.</p></form>
+      <div class="container">
+        <div class="contact-grid contact-grid-compact">
+          <div class="contact-info"><span class="kicker">Contacto</span><h2>Hablemos de tu próximo proyecto.</h2><p>Cuéntanos brevemente qué necesitas pintar y te ayudaremos a revisar las opciones disponibles.</p><div class="contact-list"><a href="tel:+528111045465">81 1104 5465</a><a href="mailto:contacto@pinturastuled.com">contacto@pinturastuled.com</a><a href="https://wa.me/528180641624" target="_blank" rel="noopener">WhatsApp: 81 8064 1624</a><address>Jardines de la Primavera 865, Apodaca, Nuevo León, México.</address></div></div>
+          <form class="quote-form quote-form-compact" data-quote-form><div class="form-grid">
+            <div class="field"><label for="nombre">Nombre *</label><input id="nombre" name="nombre" autocomplete="name" required></div>
+            <div class="field"><label for="telefono">Teléfono *</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" required></div>
+            <div class="field field-wide"><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization"></div>
+            <div class="field field-wide"><label for="proyecto">¿Qué necesitas pintar? *</label><textarea id="proyecto" name="proyecto" required placeholder="Tipo de pieza, cantidad aproximada y acabado que buscas"></textarea></div>
+          </div><button class="btn btn-primary" type="submit">Enviar por WhatsApp</button><p class="form-note">WhatsApp abrirá un mensaje con estos datos. Tuled no los almacena en el sitio.</p></form>
+        </div>
+        <div class="contact-map-standalone"><div class="map"><iframe title="Ubicación de Tuled en Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8542.10907623705!2d-100.26592561940498!3d25.8195881388607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866292d5ba8390f9%3A0x3203664b6122f4fe!2sTuled%20SA%20de%20CV%20Pintura%20En%20Polvo!5e0!3m2!1ses-419!2smx!4v1793155082453!5m2!1ses-419!2smx" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
       </div>
     </section>
   </main>
 
   <footer class="footer"><div class="container"><div class="footer-grid"><div><img class="footer-logo" src="imgs/Tuled_logo_original_blanco_sin_fondo.png" alt="Tuled"><p>Aplicación de pintura de excelente calidad.<br>Empresa mexicana desde 2003.</p></div><nav aria-label="Navegación del pie"><h3>Explora</h3><a href="#servicios">Servicios</a><a href="piezas.html">Qué pintamos</a><a href="quienes-somos.html">Quiénes somos</a><a href="blog.html">Blog</a><a href="faqs.html">Preguntas frecuentes</a></nav><div class="footer-contact"><h3>Contacto</h3><a href="tel:+528111045465">81 1104 5465</a><a href="mailto:contacto@pinturastuled.com">contacto@pinturastuled.com</a><span>Apodaca, Nuevo León</span></div></div><div class="footer-bottom"><span>© <span data-year></span> Tuled, S.A. de C.V.</span><span>Información técnica sujeta a evaluación de cada proyecto.</span></div></div></footer>
-  <div class="floating-stack"><a class="floating-iso" href="#calidad" aria-label="Ver información de gestión de calidad"><img src="imgs/iso9001.webp" alt=""></a><a class="floating-wa" href="https://wa.me/528180641624?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp"><img src="imgs/whatsapp.png" alt=""></a></div>
+  <div class="floating-stack"><a class="floating-iso" data-cert-note="Contamos con certificación ISO 9001:2015. Pregúntanos por su alcance y conoce cómo respalda la calidad de nuestros procesos." href="#calidad" aria-label="Ver información de gestión de calidad"><img src="imgs/iso9001.webp" alt=""></a><a class="floating-wa" href="https://wa.me/528180641624?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20pintura%20electrost%C3%A1tica." target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp"><img src="imgs/whatsapp.png" alt=""></a></div>
 </body>
 </html>

@@ -44,6 +44,9 @@
   if (video) {
     video.muted = true;
     video.defaultMuted = true;
+    const showVideo = () => video.classList.add('is-ready');
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) showVideo();
+    else video.addEventListener('loadeddata', showVideo, { once: true });
     video.play().catch(() => {});
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) video.pause();
@@ -87,30 +90,56 @@
 
   const pieceReveal = document.querySelector('.piece-reveal');
   if (pieceReveal) {
-    pieceReveal.addEventListener('click', () => {
-      const painted = pieceReveal.classList.toggle('is-painted');
+    let pieceTimer = null;
+    const setPieceState = painted => {
+      pieceReveal.classList.toggle('is-painted', painted);
       pieceReveal.setAttribute('aria-pressed', String(painted));
+    };
+    pieceReveal.addEventListener('click', () => {
+      setPieceState(!pieceReveal.classList.contains('is-painted'));
     });
-    if (matchMedia('(hover: none)').matches) {
-      new IntersectionObserver(entries => entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('is-painted');
-      }), { threshold: .55 }).observe(pieceReveal);
-    }
+    const startPieceCycle = () => {
+      if (pieceTimer || reduceMotion) return;
+      pieceTimer = setInterval(() => setPieceState(!pieceReveal.classList.contains('is-painted')), 2200);
+    };
+    const stopPieceCycle = () => { clearInterval(pieceTimer); pieceTimer = null; };
+    new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting ? startPieceCycle() : stopPieceCycle()), { threshold: .35 }).observe(pieceReveal);
   }
 
   const finishImage = document.querySelector('[data-finish-image]');
-  document.querySelectorAll('.finish-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.finish-tab').forEach(item => item.classList.remove('active'));
-      tab.classList.add('active');
-      if (!finishImage) return;
-      const frame = finishImage.parentElement;
-      frame.classList.add('is-changing');
-      setTimeout(() => {
-        finishImage.src = tab.dataset.image;
-        finishImage.alt = tab.dataset.alt || '';
-        frame.classList.remove('is-changing');
-      }, reduceMotion ? 0 : 180);
+  const finishTabs = [...document.querySelectorAll('.finish-tab')];
+  let finishIndex = 0;
+  let finishTimer = null;
+  let finishSwapTimer = null;
+  const activateFinish = tab => {
+    finishTabs.forEach(item => item.classList.toggle('active', item === tab));
+    finishIndex = Math.max(0, finishTabs.indexOf(tab));
+    if (!finishImage) return;
+    const frame = finishImage.parentElement;
+    frame.classList.add('is-changing');
+    clearTimeout(finishSwapTimer);
+    finishSwapTimer = setTimeout(() => {
+      finishImage.src = tab.dataset.image;
+      finishImage.alt = tab.dataset.alt || '';
+      frame.classList.remove('is-changing');
+    }, reduceMotion ? 0 : 180);
+  };
+  finishTabs.forEach(tab => tab.addEventListener('click', () => activateFinish(tab)));
+  const startFinishCycle = () => {
+    if (finishTimer || reduceMotion || finishTabs.length < 2) return;
+    finishTimer = setInterval(() => activateFinish(finishTabs[(finishIndex + 1) % finishTabs.length]), 2800);
+  };
+  const stopFinishCycle = () => { clearInterval(finishTimer); finishTimer = null; };
+  const finishLayout = document.querySelector('.finish-layout');
+  if (finishLayout) new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting ? startFinishCycle() : stopFinishCycle()), { threshold: .25 }).observe(finishLayout);
+
+  document.querySelectorAll('[data-auto-clone]').forEach(track => {
+    [...track.children].forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.tabIndex = -1;
+      clone.querySelectorAll('img').forEach(image => image.alt = '');
+      track.appendChild(clone);
     });
   });
 
