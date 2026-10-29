@@ -31,6 +31,10 @@
 
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 
+  const homeStorePreview = document.querySelector('.home-shop-preview');
+  const contactSection = document.querySelector('#contacto');
+  if (homeStorePreview && contactSection) contactSection.before(homeStorePreview);
+
   const visibleObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -193,6 +197,175 @@
     });
   });
 
+  const shopProducts = document.querySelectorAll('[data-shop-product]');
+  const cartItems = document.querySelector('[data-cart-items]');
+  const cartKilos = document.querySelector('[data-cart-kilos]');
+  const cartTotalKilos = document.querySelector('[data-cart-total-kilos]');
+  const cartTotalPrice = document.querySelector('[data-cart-total-price]');
+  const openOrderButton = document.querySelector('[data-open-order]');
+  const orderModal = document.querySelector('[data-order-modal]');
+  const orderSummary = document.querySelector('[data-order-summary]');
+  const sendOrderLink = document.querySelector('[data-send-order]');
+  const shopCart = new Map();
+  const money = value => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(value);
+
+  const getShopTotals = () => {
+    let kilos = 0;
+    let price = 0;
+    shopCart.forEach(item => {
+      kilos += item.kilos;
+      price += item.kilos * item.price;
+    });
+    return { kilos, price };
+  };
+
+  const buildOrderMessage = () => {
+    const { kilos, price } = getShopTotals();
+    const lines = ['Hola Tuled, quiero hacer un pedido de pintura en polvo:', ''];
+    shopCart.forEach(item => {
+      lines.push(`• ${item.code} ${item.name} · ${item.finish}: ${item.kilos} kg × ${money(item.price)} = ${money(item.kilos * item.price)}`);
+    });
+    lines.push('', `Total: ${kilos} kg`, `Total estimado: ${money(price)}`, '', '¿Me confirman disponibilidad y que estará listo para recoger en la sucursal Tuled en un plazo máximo de 24 horas?');
+    return lines.join('\n');
+  };
+
+  const renderOrderSummary = () => {
+    if (!orderSummary || !sendOrderLink) return;
+    const { kilos, price } = getShopTotals();
+    orderSummary.innerHTML = '';
+    shopCart.forEach(item => {
+      const line = document.createElement('div');
+      line.className = 'order-summary-line';
+      const name = document.createElement('span');
+      name.textContent = `${item.code} ${item.name} · ${item.finish}`;
+      const amount = document.createElement('span');
+      amount.textContent = `${item.kilos} kg · ${money(item.kilos * item.price)}`;
+      line.append(name, amount);
+      orderSummary.append(line);
+    });
+    const total = document.createElement('div');
+    total.className = 'order-summary-total';
+    total.innerHTML = `<span>Total · ${kilos} kg</span><strong>${money(price)}</strong>`;
+    orderSummary.append(total);
+    sendOrderLink.href = `https://wa.me/5218112303901?text=${encodeURIComponent(buildOrderMessage())}`;
+  };
+
+  const renderShopCart = () => {
+    if (!cartItems) return;
+    cartItems.innerHTML = '';
+    if (!shopCart.size) {
+      const empty = document.createElement('p');
+      empty.className = 'shop-cart-empty';
+      empty.textContent = 'Aún no agregas colores.';
+      cartItems.append(empty);
+    } else {
+      shopCart.forEach(item => {
+        const line = document.createElement('div');
+        line.className = 'cart-line';
+        line.innerHTML = `<div class="cart-line-name"><strong>${item.code} ${item.name}</strong><small>${item.finish} · ${money(item.price)}/kg</small></div><span class="cart-line-price">${money(item.kilos * item.price)}</span><div class="cart-line-controls"><button type="button" data-cart-action="minus" data-product-id="${item.id}" aria-label="Quitar un kilo">−</button><span>${item.kilos} kg</span><button type="button" data-cart-action="plus" data-product-id="${item.id}" aria-label="Agregar un kilo">+</button><button type="button" class="cart-remove" data-cart-action="remove" data-product-id="${item.id}">Quitar</button></div>`;
+        cartItems.append(line);
+      });
+    }
+    const { kilos, price } = getShopTotals();
+    if (cartKilos) cartKilos.textContent = `${kilos} kg`;
+    if (cartTotalKilos) cartTotalKilos.textContent = `${kilos} kg`;
+    if (cartTotalPrice) cartTotalPrice.textContent = money(price);
+    if (openOrderButton) openOrderButton.disabled = kilos === 0;
+  };
+
+  shopProducts.forEach(card => {
+    const input = card.querySelector('input[type="number"]');
+    const button = card.querySelector('[data-add-product]');
+    if (input && !input.closest('.quantity-stepper')) {
+      input.value = String(Math.max(1, Math.round(Number(input.value) || 1)));
+      const stepper = document.createElement('div');
+      stepper.className = 'quantity-stepper';
+      const minus = document.createElement('button');
+      minus.type = 'button';
+      minus.className = 'quantity-step quantity-step-minus';
+      minus.setAttribute('aria-label', 'Disminuir kilos');
+      minus.textContent = '−';
+      const plus = document.createElement('button');
+      plus.type = 'button';
+      plus.className = 'quantity-step quantity-step-plus';
+      plus.setAttribute('aria-label', 'Aumentar kilos');
+      plus.textContent = '+';
+      input.before(stepper);
+      stepper.append(minus, input, plus);
+      const changeQuantity = amount => {
+        const next = Math.max(1, Math.min(999, Math.round(Number(input.value) || 1) + amount));
+        input.value = String(next);
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      };
+      minus.addEventListener('click', () => changeQuantity(-1));
+      plus.addEventListener('click', () => changeQuantity(1));
+      input.addEventListener('change', () => {
+        input.value = String(Math.max(1, Math.min(999, Math.round(Number(input.value) || 1))));
+      });
+    }
+    button?.addEventListener('click', () => {
+      const kilos = Math.max(1, Math.min(999, Math.round(Number(input?.value) || 1)));
+      if (input) input.value = String(kilos);
+      const item = {
+        id: card.dataset.productId,
+        code: card.dataset.productCode,
+        name: card.dataset.productName,
+        finish: card.dataset.productFinish,
+        price: Number(card.dataset.productPrice) || 109,
+        kilos
+      };
+      const current = shopCart.get(item.id);
+      if (current) current.kilos += kilos;
+      else shopCart.set(item.id, item);
+      renderShopCart();
+      button.classList.remove('is-added');
+      void button.offsetWidth;
+      button.classList.add('is-added');
+      button.textContent = 'Agregado';
+      setTimeout(() => {
+        button.classList.remove('is-added');
+        button.textContent = 'Agregar';
+      }, 700);
+    });
+  });
+
+  cartItems?.addEventListener('click', event => {
+    const button = event.target.closest('[data-cart-action]');
+    if (!button) return;
+    const item = shopCart.get(button.dataset.productId);
+    if (!item) return;
+    if (button.dataset.cartAction === 'plus') item.kilos += 1;
+    if (button.dataset.cartAction === 'minus') item.kilos -= 1;
+    if (button.dataset.cartAction === 'remove' || item.kilos <= 0) shopCart.delete(item.id);
+    renderShopCart();
+  });
+
+  const closeOrder = () => {
+    if (!orderModal) return;
+    orderModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    openOrderButton?.focus();
+  };
+
+  openOrderButton?.addEventListener('click', () => {
+    if (!shopCart.size || !orderModal) return;
+    renderOrderSummary();
+    orderModal.hidden = false;
+    document.body.classList.add('modal-open');
+    orderModal.querySelector('[data-close-order]')?.focus();
+  });
+  orderModal?.querySelectorAll('[data-close-order]').forEach(button => button.addEventListener('click', closeOrder));
+  orderModal?.addEventListener('click', event => {
+    if (event.target === orderModal) closeOrder();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && orderModal && !orderModal.hidden) closeOrder();
+  });
+  sendOrderLink?.addEventListener('click', () => {
+    setTimeout(closeOrder, 250);
+  });
+  renderShopCart();
+
   const quoteForm = document.querySelector('[data-quote-form]');
   quoteForm?.addEventListener('submit', event => {
     event.preventDefault();
@@ -208,11 +381,11 @@
       const clean = String(value).trim();
       if (clean) lines.push(`${labels[key] || key}: ${clean}`);
     }
-    open(`https://wa.me/528180641624?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener,noreferrer');
+    open(`https://wa.me/5218112303901?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener,noreferrer');
   });
 
   document.querySelectorAll('[data-piece-quote]').forEach(link => {
     const name = link.dataset.pieceQuote;
-    link.href = `https://wa.me/528180641624?text=${encodeURIComponent(`Hola, quiero cotizar pintura electrostática para: ${name}.`)}`;
+    link.href = `https://wa.me/5218112303901?text=${encodeURIComponent(`Hola, quiero cotizar pintura electrostática para: ${name}.`)}`;
   });
 })();
