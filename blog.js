@@ -17,7 +17,9 @@
       card.hidden = !show;
       if (show) visible += 1;
     });
-    if (result) result.textContent = `Mostrando ${visible} ${visible === 1 ? 'artículo' : 'artículos'}`;
+    if (result) result.textContent = (term || category !== 'Todos')
+      ? 'Resultados relacionados con tu búsqueda'
+      : 'Explora nuestras guías técnicas';
     if (empty) empty.hidden = visible !== 0;
   };
   search?.addEventListener('input', filterCards);

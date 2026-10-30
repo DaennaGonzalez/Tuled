@@ -425,4 +425,82 @@
     const name = link.dataset.pieceQuote;
     link.href = `https://wa.me/5218112303901?text=${encodeURIComponent(`Hola, quiero cotizar pintura electrostática para: ${name}.`)}`;
   });
+
+  // Estela ligera de humo blanco para dispositivos con cursor preciso.
+  const finePointer = matchMedia('(pointer:fine)').matches;
+  const reducedMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if (finePointer && !reducedMotion) {
+    const smokeCanvas = document.createElement('canvas');
+    smokeCanvas.className = 'cursor-smoke';
+    smokeCanvas.setAttribute('aria-hidden', 'true');
+    document.body.append(smokeCanvas);
+    const context = smokeCanvas.getContext('2d', { alpha: true });
+    const particles = [];
+    let frame = 0;
+    let lastSpawn = 0;
+    let lastX = -100;
+    let lastY = -100;
+    let pixelRatio = 1;
+
+    const resizeSmoke = () => {
+      pixelRatio = Math.min(devicePixelRatio || 1, 1.35);
+      smokeCanvas.width = Math.round(innerWidth * pixelRatio);
+      smokeCanvas.height = Math.round(innerHeight * pixelRatio);
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    };
+
+    const drawSmoke = now => {
+      context.clearRect(0, 0, innerWidth, innerHeight);
+      for (let index = particles.length - 1; index >= 0; index -= 1) {
+        const particle = particles[index];
+        const progress = (now - particle.born) / particle.duration;
+        if (progress >= 1) {
+          particles.splice(index, 1);
+          continue;
+        }
+        const ease = 1 - Math.pow(1 - progress, 2);
+        const x = particle.x + particle.vx * ease;
+        const y = particle.y + particle.vy * ease;
+        const radius = particle.size * (.72 + ease * .85);
+        const opacity = Math.sin(Math.PI * progress) * particle.opacity;
+        const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
+        gradient.addColorStop(0, `rgba(255,255,255,${opacity})`);
+        gradient.addColorStop(.42, `rgba(248,253,250,${opacity * .58})`);
+        gradient.addColorStop(1, 'rgba(255,255,255,0)');
+        context.fillStyle = gradient;
+        context.beginPath();
+        context.arc(x, y, radius, 0, Math.PI * 2);
+        context.fill();
+      }
+      frame = particles.length ? requestAnimationFrame(drawSmoke) : 0;
+    };
+
+    document.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch') return;
+      const now = performance.now();
+      const distance = Math.hypot(event.clientX - lastX, event.clientY - lastY);
+      if (now - lastSpawn < 30 || distance < 7) return;
+      lastSpawn = now;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      const amount = distance > 34 ? 2 : 1;
+      for (let index = 0; index < amount; index += 1) {
+        particles.push({
+          x: event.clientX + (Math.random() - .5) * 7,
+          y: event.clientY + (Math.random() - .5) * 7,
+          vx: (Math.random() - .5) * 22,
+          vy: -22 - Math.random() * 26,
+          size: 7 + Math.random() * 8,
+          opacity: .16 + Math.random() * .13,
+          born: now - index * 18,
+          duration: 650 + Math.random() * 260
+        });
+      }
+      if (particles.length > 28) particles.splice(0, particles.length - 28);
+      if (!frame) frame = requestAnimationFrame(drawSmoke);
+    }, { passive: true });
+
+    addEventListener('resize', resizeSmoke, { passive: true });
+    resizeSmoke();
+  }
 })();

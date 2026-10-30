@@ -1,0 +1,25 @@
+{
+  "name": "TULED | Pintura Electrostática",
+  "short_name": "TULED",
+  "description": "Pintura electrostática de excelente calidad para piezas metálicas.",
+  "lang": "es-MX",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#06452F",
+  "background_color": "#06452F",
+  "icons": [
+    {
+      "src": "/imgs/favicon-redondo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/imgs/favicon-redondo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
