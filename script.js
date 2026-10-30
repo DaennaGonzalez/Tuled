@@ -32,8 +32,10 @@
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 
   const homeStorePreview = document.querySelector('.home-shop-preview');
+  const homeKnowledge = document.querySelector('.home-knowledge');
   const contactSection = document.querySelector('#contacto');
   if (homeStorePreview && contactSection) contactSection.before(homeStorePreview);
+  if (homeKnowledge && contactSection) contactSection.before(homeKnowledge);
 
   const visibleObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -56,6 +58,27 @@
       if (document.hidden) video.pause();
       else video.play().catch(() => {});
     });
+  }
+
+  const aboutGallery = document.querySelector('[data-about-gallery]');
+  if (aboutGallery) {
+    const frames = [...aboutGallery.querySelectorAll('img')];
+    let activeFrame = 0;
+    let galleryTimer = null;
+    const showNextFrame = () => {
+      frames[activeFrame]?.classList.remove('is-active');
+      activeFrame = (activeFrame + 1) % frames.length;
+      frames[activeFrame]?.classList.add('is-active');
+    };
+    const startGallery = () => {
+      if (galleryTimer || reduceMotion || frames.length < 2) return;
+      galleryTimer = setInterval(showNextFrame, 1800);
+    };
+    const stopGallery = () => {
+      clearInterval(galleryTimer);
+      galleryTimer = null;
+    };
+    new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting ? startGallery() : stopGallery()), { threshold: .2 }).observe(aboutGallery);
   }
 
   document.querySelectorAll('[data-roll-start][data-roll-end]').forEach(metric => {
@@ -173,8 +196,22 @@
       const scroller = shell?.querySelector('.marquee, .material-rail, .pieces-preview');
       if (!scroller) return;
       shell.classList.add('is-controlled');
-      const amount = Math.max(260, scroller.clientWidth * .72) * Number(control.dataset.carouselDir || 1);
+      const direction = Number(control.dataset.carouselDir || 1);
+      const step = Math.max(260, scroller.clientWidth * .72);
+      if (scroller.matches('[data-looping-marquee]')) {
+        const loopWidth = scroller.scrollWidth / 2;
+        if (direction < 0 && scroller.scrollLeft < step * .35) scroller.scrollLeft += loopWidth;
+        if (direction > 0 && scroller.scrollLeft > loopWidth - step * .35) scroller.scrollLeft -= loopWidth;
+      }
+      const amount = step * direction;
       scroller.scrollBy({ left: amount, behavior: reduceMotion ? 'auto' : 'smooth' });
+      if (scroller.matches('[data-looping-marquee]')) {
+        clearTimeout(scroller._loopTimer);
+        scroller._loopTimer = setTimeout(() => {
+          const loopWidth = scroller.scrollWidth / 2;
+          if (scroller.scrollLeft >= loopWidth) scroller.scrollLeft -= loopWidth;
+        }, reduceMotion ? 50 : 650);
+      }
       clearTimeout(shell._resumeTimer);
       shell._resumeTimer = setTimeout(() => shell.classList.remove('is-controlled'), 2400);
     });

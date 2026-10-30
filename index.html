@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261029-v3-7">
-  <script src="script.js?v=20261029-v3-7" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261029-v3-14">
+  <script src="script.js?v=20261029-v3-14" defer></script>
 </head>
 <body>
   <div class="site-video-bg" aria-hidden="true">
@@ -67,7 +67,13 @@
     </section>
 
     <section class="about-split">
-      <div class="about-photo reveal"><img src="imgs/evidencia-7.webp" alt="Área de producción y personal de Tuled" loading="lazy"></div>
+      <div class="about-photo about-photo-gallery reveal" data-about-gallery role="img" aria-label="Experiencia, instalaciones y equipo de trabajo de Tuled">
+        <img class="is-active" src="imgs/evidencia-7.webp" alt="" loading="lazy">
+        <img src="imgs/evidencia-11.webp" alt="" loading="lazy">
+        <img src="imgs/evidencia-10.webp" alt="" loading="lazy">
+        <img src="imgs/evidencia-3.webp" alt="" loading="lazy">
+        <img src="imgs/evidencia-6.webp" alt="" loading="lazy">
+      </div>
       <div class="about-copy">
         <div class="heritage-mark" aria-label="Tuled, fundada en 2003"><span>Fundada en</span><strong>2003</strong><small>Tuled · Nuevo León</small></div>
         <h2 class="heritage-title reveal">Más de dos décadas dando forma a mejores acabados.</h2>
@@ -153,10 +159,14 @@
 
     <section class="section-tight section-deep">
       <div class="container"><div class="section-head"><div><span class="kicker">Proveedores</span><h2>Marcas con las que trabajamos.</h2></div><p>Opciones de diferentes fabricantes para responder a necesidades de color, acabado y aplicación.</p></div></div>
-      <div class="carousel-shell"><div class="marquee" aria-label="Marcas proveedoras de pintura"><div class="marquee-track">
+      <div class="carousel-shell"><div class="marquee" data-looping-marquee aria-label="Marcas proveedoras de pintura"><div class="marquee-track" data-auto-clone>
         <div class="logo-item"><img src="imgs/1-proveedorpintura.webp" alt="Marca proveedora 1"></div><div class="logo-item"><img src="imgs/2-proveedorpintura.webp" alt="Marca proveedora 2"></div><div class="logo-item"><img src="imgs/3-proveedorpintura.webp" alt="Marca proveedora 3"></div><div class="logo-item"><img src="imgs/4-proveedorpintura.webp" alt="Marca proveedora 4"></div><div class="logo-item"><img src="imgs/5-proveedorpintura.webp" alt="Marca proveedora 5"></div><div class="logo-item"><img src="imgs/6-proveedorpintura.webp" alt="Marca proveedora 6"></div><div class="logo-item"><img src="imgs/7-proveedorpintura.webp" alt="Marca proveedora 7"></div><div class="logo-item"><img src="imgs/8-proveedorpintura.webp" alt="Marca proveedora 8"></div><div class="logo-item"><img src="imgs/9-proveedorpintura.webp" alt="Marca proveedora 9"></div>
         <div class="logo-item" aria-hidden="true"><img src="imgs/1-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/2-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/3-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/4-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/5-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/6-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/7-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/8-proveedorpintura.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/9-proveedorpintura.webp" alt=""></div>
       </div></div><div class="carousel-controls" aria-label="Controles de proveedores"><button type="button" data-carousel-dir="-1" aria-label="Ver marcas anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver marcas siguientes">→</button></div></div>
+    </section>
+
+    <section class="section section-deep home-knowledge" aria-labelledby="knowledge-title">
+      <div class="container"><div class="home-knowledge-heading"><div><span class="kicker">Guías Tuled</span><h2 id="knowledge-title">Ideas que aterrizan en <span class="title-accent">mejores acabados.</span></h2></div><p>Lecturas breves para entender el proceso antes de compartir tu proyecto.</p></div><div class="home-knowledge-grid"><a href="blog/que-es-pintura-electrostatica.html"><span>01</span><strong>Entiende la pintura electrostática</strong><small>Usos, ventajas y límites</small></a><a href="blog/piezas-metalicas-pintura-electrostatica.html"><span>02</span><strong>Descubre qué piezas podemos evaluar</strong><small>Gabinetes, rejillas y estructuras</small></a><a href="blog/como-cotizar-pintura-electrostatica.html"><span>03</span><strong>Prepara mejor tu cotización</strong><small>Fotos, medidas y cantidades</small></a></div><a class="home-knowledge-link" href="blog.html">Ver la biblioteca completa <span aria-hidden="true">→</span></a></div>
     </section>
 
     <section class="section shop-section home-shop-preview texture" id="tienda" style="--texture:url('imgs/textura-metal6.webp')">
@@ -278,7 +288,7 @@
 
     <section class="section-tight section-dark">
       <div class="container"><div class="section-head center-head"><div><h2>Empresas que confían en nosotros.</h2></div></div></div>
-      <div class="carousel-shell"><div class="marquee" aria-label="Empresas clientes"><div class="marquee-track">
+      <div class="carousel-shell"><div class="marquee" data-looping-marquee aria-label="Empresas clientes"><div class="marquee-track" data-auto-clone>
         <div class="logo-item"><img src="imgs/1-cliente.webp" alt="Güntner"></div><div class="logo-item"><img src="imgs/2-cliente.webp" alt="EZI"></div><div class="logo-item"><img src="imgs/3-cliente.webp" alt="Hierro Gris de Monterrey"></div><div class="logo-item"><img src="imgs/4-cliente.webp" alt="SRI"></div><div class="logo-item"><img src="imgs/5-cliente.webp" alt="Plesa"></div>
         <div class="logo-item" aria-hidden="true"><img src="imgs/1-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/2-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/3-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/4-cliente.webp" alt=""></div><div class="logo-item" aria-hidden="true"><img src="imgs/5-cliente.webp" alt=""></div>
       </div></div><div class="carousel-controls" aria-label="Controles de clientes"><button type="button" data-carousel-dir="-1" aria-label="Ver clientes anteriores">←</button><button type="button" data-carousel-dir="1" aria-label="Ver clientes siguientes">→</button></div></div>
