@@ -5,7 +5,7 @@ const root = path.dirname(new URL(import.meta.url).pathname.replace(/^\/(?:[A-Za
 const out = path.join(root, 'blog');
 fs.mkdirSync(out, { recursive: true });
 
-const domain = 'https://www.pinturastuled.com';
+const domain = 'https://tuled.com.mx';
 const phone = '5218112303901';
 const published = '2026-10-29';
 const shareImage = `${domain}/imgs/imagen-compartirlink.jpg`;
@@ -67,13 +67,56 @@ function articleHtml(a){
   const toc = a.points.map((p,i)=>`<a href="#punto-${i+1}">${esc(p[0])}</a>`).join('');
   const body = a.points.map((p,i)=>`<section class="article-section reveal" id="punto-${i+1}"><span class="article-number">${String(i+1).padStart(2,'0')}</span><div><h2>${esc(p[0])}</h2><p>${esc(p[1])}</p></div></section>`).join('');
   const related = a.related.map(id=>articles.find(x=>x.id===id)).filter(Boolean);
-  const jsonld = { '@context':'https://schema.org','@type':'BlogPosting',headline:a.title,description:a.excerpt,image:`${domain}/imgs/${a.image}`,datePublished:published,dateModified:published,author:{'@type':'Organization',name:'Equipo Tuled'},publisher:{'@type':'Organization',name:'Tuled, S.A. de C.V.',logo:{'@type':'ImageObject',url:`${domain}/imgs/favicon-redondo-512x512.png`}},mainEntityOfPage:`${domain}/blog/${a.slug}.html` };
+  const articleUrl = `${domain}/blog/${a.slug}.html`;
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${articleUrl}#article`,
+        headline: a.title,
+        description: a.excerpt,
+        image: `${domain}/imgs/${a.image}`,
+        datePublished: published,
+        dateModified: published,
+        author: {'@type':'Organization', name:'Equipo Tuled'},
+        publisher: {
+          '@type':'Organization',
+          '@id': `${domain}/#organization`,
+          name:'Tuled, S.A. de C.V.',
+          logo:{'@type':'ImageObject', url:`${domain}/imgs/favicon-redondo-512x512.png`}
+        },
+        mainEntityOfPage: {'@type':'WebPage', '@id': articleUrl},
+        inLanguage: 'es-MX'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${articleUrl}#breadcrumb`,
+        itemListElement: [
+          {'@type':'ListItem', position:1, name:'Inicio', item:`${domain}/`},
+          {'@type':'ListItem', position:2, name:'Blog', item:`${domain}/blog.html`},
+          {'@type':'ListItem', position:3, name:a.title, item:articleUrl}
+        ]
+      }
+    ]
+  };
   return `<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${identityHead}<title>${esc(a.title)} | Tuled</title><meta name="description" content="${esc(a.excerpt)}">${socialHead(a.title,a.excerpt,`${domain}/blog/${a.slug}.html`,'article')}<meta property="article:published_time" content="${published}"><meta property="article:modified_time" content="${published}"><link rel="stylesheet" href="../styles.css?v=20261030-v3-25"><link rel="stylesheet" href="../blog.css?v=20261030-v3-25"><script src="../script.js?v=20261030-v3-25" defer></script><script src="../blog.js?v=20261030-v3-25" defer></script><script type="application/ld+json">${JSON.stringify(jsonld)}</script></head><body class="with-video-bg article-page">${video}<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>${header('../')}<main id="contenido"><article><header class="article-hero"><div class="container"><nav class="breadcrumbs" aria-label="Migas de pan"><a href="../index.html">Inicio</a><span>/</span><a href="../blog.html">Blog</a><span>/</span><span>${esc(a.cat)}</span></nav><div class="article-hero-grid"><div><span class="kicker">${esc(a.cat)} · Guía ${String(a.id).padStart(2,'0')}</span><h1>${esc(a.title)}</h1><p>${esc(a.excerpt)}</p><div class="article-meta"><span>Equipo Tuled</span><time datetime="${published}">29 octubre 2026</time><span>${Math.max(6,a.points.length+2)} min de lectura</span></div></div><figure><img src="../imgs/${a.image}" alt="Portada del artículo: ${esc(a.title)}" fetchpriority="high"></figure></div></div></header><div class="container article-layout"><aside class="article-toc glass-panel"><strong>En este artículo</strong>${toc}<a class="toc-cta" href="${wa(a.message)}" target="_blank" rel="noopener">Cotizar por WhatsApp</a></aside><div class="article-content"><p class="article-lede">${esc(a.intro)}</p><blockquote>${esc(a.quote)}</blockquote>${special(a)}${body}<section class="article-section reveal" id="informacion"><span class="article-number">✓</span><div><h2>Información útil para solicitar una evaluación</h2><p>Comparte fotografías claras, dimensiones, material, cantidad, color o referencia, acabado, uso interior o exterior, áreas que no deben pintarse y fecha requerida. Si algún dato todavía no está definido, indícalo: el objetivo es revisar el proyecto con información real, no completar supuestos.</p></div></section><section class="local-note glass-panel"><span class="kicker">Atención industrial en Nuevo León</span><h2>Tuled se encuentra en Apodaca.</h2><p>Desde Jardines de la Primavera 865 atendemos solicitudes relacionadas con pintura electrostática para empresas de Monterrey y su área metropolitana. La capacidad, preparación, formulación y plazo se confirman para cada proyecto.</p></section><section class="article-cta"><span class="kicker">¿Tienes un proyecto?</span><h2>${esc(a.cta)}.</h2><p>Envíanos fotografías, medidas y cantidad para comenzar la revisión.</p><a class="btn btn-primary" href="${wa(a.message)}" target="_blank" rel="noopener">${esc(a.cta)}</a></section><section class="sources"><h2>Fuentes técnicas consultadas</h2><ul><li><a href="https://www.powdercoating.org/page/WhatIsPC" target="_blank" rel="noopener">Powder Coating Institute: What is Powder Coating?</a></li><li><a href="https://www.powdercoating.org/page/FAQ" target="_blank" rel="noopener">Powder Coating Institute: preguntas técnicas frecuentes</a></li></ul><p>La información describe principios generales. La ficha técnica del producto y la especificación del cliente prevalecen en cada proyecto.</p></section></div></div></article><section class="section related-section"><div class="container"><div class="section-head"><div><span class="kicker">Continúa aprendiendo</span><h2>Artículos relacionados.</h2></div></div><div class="related-grid">${related.map(r=>card(r,'../')).join('')}</div><a class="btn btn-secondary" href="../blog.html">Ver todas las guías</a></div></section></main>${footer('../')}</body></html>`;
 }
 
 for(const a of articles) fs.writeFileSync(path.join(out,`${a.slug}.html`),articleHtml(a));
 
-const sitemap = [`${domain}/`,`${domain}/servicios.html`,`${domain}/piezas.html`,`${domain}/quienes-somos.html`,`${domain}/blog.html`,`${domain}/faqs.html`,`${domain}/tienda.html`,...articles.map(a=>`${domain}/blog/${a.slug}.html`)].map(url=>`  <url><loc>${url}</loc><lastmod>${published}</lastmod></url>`).join('\n');
+const publicPages = [
+  `${domain}/`,
+  `${domain}/quienes-somos.html`,
+  `${domain}/piezas.html`,
+  `${domain}/tienda.html`,
+  `${domain}/blog.html`,
+  `${domain}/faqs.html`
+];
+const sitemap = [
+  ...publicPages.map(url => `  <url><loc>${url}</loc></url>`),
+  ...articles.map(a => `  <url><loc>${domain}/blog/${a.slug}.html</loc><lastmod>${published}</lastmod></url>`)
+].join('\n');
 fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap}\n</urlset>\n`);
 fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${domain}/sitemap.xml\n`);
 console.log(`Generated ${articles.length} articles, blog index, sitemap and robots.txt.`);
